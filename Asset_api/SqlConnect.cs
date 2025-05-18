@@ -16,7 +16,7 @@ namespace Asset_api
             try
             {
 
-                string strConn = String.Format("Host={1};Username={2};Password{3};Database={4};Post={5}", host, user, password, db, port);
+                string strConn = String.Format("Host={0};Username={1};Password={2};Database={3}", host, user, password, db);
                 using NpgsqlConnection conn = new NpgsqlConnection(strConn);
                 conn.Open();
 
@@ -27,7 +27,7 @@ namespace Asset_api
             catch (Exception ex)
             {
 
-                throw new Exception(ex.Message);
+                throw new Exception(ex.Message + String.Format("Host={0};Username={1};Password={2};Database={3}", host, user, password, db));
             }
 
         }
